@@ -1,4 +1,4 @@
-const Temperaments = require("../models/Temperaments");
+const { Dog, DogsTemperaments } = require("../db");
 const { getDogsFromApi } = require("../services/dogs.service");
 
 const getDogs = async () => {
@@ -8,7 +8,7 @@ const getDogs = async () => {
 
 const getDogsByID = async (id) => {
     const dogs = await getDogs();
-    const dogByID = dogs.filter(dog => dog.id == id);
+    const dogByID = dogs.find(dog => dog.id == id);
     return dogByID;
 }
 
@@ -23,42 +23,37 @@ const getDogsByName = async (name) => {
 
 }
 
-const getTemperaments = async () => {
-    try {
-        //Obtengo la lista de perros
-        const dogsTemp = await getDogs();
-        //Array para almacenar los temperamentos
-        let arrayTemperament = [];
-        //itero sobre la lista de perros
-        dogsTemp.map(dogs => {
-            //verifico si el perro tiene temperamentos
-            if (dogs.temperaments) {
-                //agrego los temperamentos al array
-                arrayTemperament.push(...dogs.temperaments.split(", "))
-            };
-        });
-        //iteramos sobre el array de temperamentos
-        arrayTemperament.map(temperamentName => {
-            //Buscamos o creamos un temperamento en la base de datos
-            Temperaments.findOrCreate({
-                where: {
-                    name: temperamentName,
-                }
-            })
-        })
-    } catch (error) {
-        throw new Error(error);
-    }
-}
-// para mañana agregarlos en routes!!!!
-const createDog = async ({ name, image, weight, height, life_span }) => {
+const createDog = async ({ name, image, weight_min, weight_max, height_max, height_min, life_span, temperaments }) => {
 
+    if (!name || !image || !height_min || !height_max || !weight_min || !weight_max || !life_span || !temperaments) throw Error("no hay info del nuevo perro")
+    const dogNew = await Dog.create({
+        name,
+        image,
+        height_min,
+        height_max,
+        weight_min,
+        weight_max,
+        life_span,
+
+    });
+    const tt = await DogsTemperaments.create({ DogId: dogNew.id, TemperamentId: temperaments })
+    console.log(tt)
+    // let addTemper = await Temperaments.findAll({
+    //     where: { name: temperaments }
+    // })
+    // dogNew.addTemperaments(addTemper)
+
+    return dogNew;
 }
+
+
+
+
 
 
 module.exports = {
     getDogs,
     getDogsByID,
     getDogsByName,
-    getTemperaments
+    createDog
 }

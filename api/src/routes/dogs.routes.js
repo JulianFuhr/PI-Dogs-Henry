@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const dogRouter = Router();
-const { getDogs, getDogsByID, getDogsByName, getTemperaments } = require("../controllers/dogs")
+const { getDogs, getDogsByID, getDogsByName, createDog } = require("../controllers/dogs")
 
 // Ruta GET para obtener información de un perro
 
@@ -40,14 +40,20 @@ dogRouter.get('/:idRaza', async (req, res) => {
 
 
 dogRouter.post('/', async (req, res) => {
+    console.log(req);
     try {
-        const { name, image } = req.body;
-        const newDog = await createDog({ name, image, weight, height, life_span })
-        res.send(newDog)
+
+        const { name, image, height_min, height_max, weight_min, weight_max, life_span, temperaments } = req.body;
+
+        const dogNew = await createDog({ name, image, height_max, height_min, weight_min, weight_max, life_span, temperaments })
+
+        res.send(dogNew)
     } catch (error) {
-
+        console.log("error", error);
+        return res.status(404).json(error.message)
     }
-})
 
+})
+// como depurar node.js
 
 module.exports = dogRouter;
