@@ -45,7 +45,16 @@ dogRouter.post('/', async (req, res) => {
 
         const { name, image, height_min, height_max, weight_min, weight_max, life_span, temperaments } = req.body;
 
-        const dogNew = await createDog({ name, image, height_max, height_min, weight_min, weight_max, life_span, temperaments })
+        const dogNew = await createDog({
+            name,
+            image,
+            height_max,
+            height_min,
+            weight_min,
+            weight_max,
+            life_span,
+            temperaments
+        })
 
         res.send(dogNew)
     } catch (error) {
