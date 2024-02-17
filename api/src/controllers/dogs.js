@@ -7,12 +7,34 @@ const mapDogs = (dogs) => {
         name: dog.name,
         image: dog.image.url,
         life_span: dog.life_span,
-        weight_min: parseFloat(dog.weight.metric.slice(0, 2).trim()),
-        weight_max: parseFloat(dog.weight.metric.slice(4).trim()),
-        height_min: parseFloat(dog.height.metric.slice(0, 2).trim()),
-        height_max: parseFloat(dog.height.metric.slice(4).trim())
+        weight_min: splitMed(dog.weight.metric).min,
+        weight_max: splitMed(dog.weight.metric).max,
+        height_min: splitMed(dog.height.metric).min,
+        height_max: splitMed(dog.height.metric).max
     }));
 };
+
+const splitMed = (medida) => {
+    if (medida.includes('-')) {
+        const medidaSplited = medida.trim().split('-')
+        const medidaMax = medidaSplited[1]
+        const medidaMin = medidaSplited[0]
+
+        return {
+            min: parseFloat(medidaMin),
+            max: parseFloat(medidaMax),
+        }
+
+
+    } else {
+        return {
+            min: parseFloat(medida),
+            max: parseFloat(medida),
+        }
+    }
+}
+
+
 
 const getDogs = async () => {
     try {
