@@ -9,7 +9,7 @@ const dogsList = allDogs
   return (
     <div className="card-list">
       {dogsList?.map((dog)=>(
-        <Card dog={dog} />
+        <Card key={dog.id} dog={dog} />
       ))}
     </div>
   );

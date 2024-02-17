@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 // import './App.css';
 import Home from './views/home/home.component';
@@ -8,11 +8,14 @@ import Create from './views/create/create.component';
 function App() {
   return (
     <div>
-      <Switch>
-        <Route exact path="/home" component={Home} />
-        <Route path="/home/:id" component={Detail} />
-        <Route path="/create" component={Create} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route exact path="/home" element={<Home />} />
+        <Route path="/home/:id" element={<Detail />} />
+        <Route path="/create" element={<Create />} />
+
+      </Routes>
     </div>
   );
 }
