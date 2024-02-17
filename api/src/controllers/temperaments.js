@@ -7,7 +7,6 @@ const getTemperaments = async () => {
         //revisar en la bd si existen temperamentos.
         //si existe temp los devuelvo
         //si no existe obtengo los temperamentos de los perros y los inserto en la base de datos
-        debugger;
         const temperaments = await Temperaments.findAll({ raw: true });
         if (temperaments.length > 0) {
             console.log("entro if");
