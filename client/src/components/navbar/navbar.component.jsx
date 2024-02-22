@@ -1,14 +1,25 @@
-import './navbar.styles.css';
+import React from "react";
+import { Link } from "react-router-dom";
 
-function Navbar({handleChange,handleSubmit}) {
+import "./navbar.styles.css";
+
+const NavBar = () => {
   return (
-    <div className="search-box">
-      <form onChange={handleChange}>
-        <input placeholder="Busqueda" type="search" />
-        <button type="submit" onClick={handleSubmit}>Buscar</button>
-      </form>
+    <div className="container">
+      <img src="/" alt="img" />
+      <ul>
+        <Link to="/home">
+          <li>Home</li>
+        </Link>
+        <Link to="/create">
+          <li>Create dog!</li>
+        </Link>
+        <Link to="/">
+          <li>Exit</li>
+        </Link>
+      </ul>
     </div>
   );
-}
+};
 
-export default Navbar;
+export default NavBar;

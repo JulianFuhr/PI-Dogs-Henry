@@ -1,12 +1,23 @@
-import './detail.styles.css';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getDogById, resetLoading } from "../../redux/actions";
+import CardID from "../../components/CardID/cardID.component";
 
+const Detail = () => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const loading = useSelector((state) => state.loading);
+  useEffect(() => {
+    dispatch(getDogById(id));
+    dispatch(resetLoading());
+  }, [dispatch, id]);
 
-function Detail() {
   return (
     <div>
-      <p>Estamos en el Detail</p>
+      <CardID loading={loading} />
     </div>
   );
-}
+};
 
 export default Detail;

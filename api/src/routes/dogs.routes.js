@@ -40,7 +40,6 @@ dogRouter.get('/:idRaza', async (req, res) => {
 
 
 dogRouter.post('/', async (req, res) => {
-    console.log(req);
     try {
 
         const { name, image, height_min, height_max, weight_min, weight_max, life_span, temperaments } = req.body;
@@ -58,7 +57,7 @@ dogRouter.post('/', async (req, res) => {
 
         res.send(dogNew)
     } catch (error) {
-        console.log("error", error);
+        console.error("error", error);
         return res.status(404).json(error.message)
     }
 
