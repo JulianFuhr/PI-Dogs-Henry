@@ -1,18 +1,52 @@
 import Card from "../card/card.component";
-import './cards.styles.css';
+import { useSelector } from "react-redux";
+import { React } from "react";
+import "./cards.styles.css";
 
-function Cards({allDogs}) {
-
-const dogsList = allDogs
-
+const Cards = ({ dogs }) => {
+  const loading = useSelector((state) => state.loading);
 
   return (
-    <div className="card-list">
-      {dogsList?.map((dog)=>(
-        <Card key={dog.id} dog={dog} />
-      ))}
+    <div className="container">
+      {loading ? (
+        <>
+          {dogs.length > 0 ? (
+            <>
+              {dogs.map((dog) => {
+                return (
+                  <Card
+                    key={dog.id}
+                    id={dog.id}
+                    name={dog.name}
+                    image={dog.image}
+                    minWeight={dog.weight_min}
+                    maxWeight={dog.weight_max}
+                    temperaments={dog.temperament}
+                  />
+                );
+              })}
+            </>
+          ) : (
+            <>
+              <Card
+                key="no-info"
+                id="no-info"
+                name="The sought breed does not exist"
+                image="https://stormgain.com/sites/default/files/news/DOGE%20breed.jpg"
+                minWeight="0"
+                maxWeight="0"
+                temperaments="There is no information"
+              />
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          <img src="/loading.gif" alt="loading img"></img>
+        </>
+      )}
     </div>
   );
-}
+};
 
 export default Cards;
