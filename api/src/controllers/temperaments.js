@@ -9,10 +9,10 @@ const getTemperaments = async () => {
         //si no existe obtengo los temperamentos de los perros y los inserto en la base de datos
         const temperaments = await Temperaments.findAll({ raw: true });
         if (temperaments.length > 0) {
-            console.log("entro if");
+
             return temperaments
         } else {
-            console.log("entro else");
+
             //Obtengo la lista de perros
             const dogsTemp = await getDogs();
 
@@ -21,19 +21,22 @@ const getTemperaments = async () => {
 
             //itero sobre la lista de perros
             dogsTemp.forEach(dogs => {
+
                 //verifico si el perro tiene temps
                 if (dogs.temperament) {
-                    //agrego los temps al array y evitamos los dup
-                    dogs.temperament.split(", ").forEach(temp => uniqueTemp.add({ name: temp }))
+                    const splitedTemperament = dogs.temperament.split(", ")
 
+                    //agrego los temps al array y evitamos los dup
+                    splitedTemperament.forEach(temp => uniqueTemp.add(temp));
                 };
             })
             //para que no haya repetidos
+
             const uniqueTempArray = Array.from(uniqueTemp);
 
 
             //creo los temps en la BD
-            await Temperaments.bulkCreate(uniqueTempArray)
+            await Temperaments.bulkCreate(uniqueTempArray.map(temp => ({ name: temp })))
 
             return Temperaments.findAll();
         };

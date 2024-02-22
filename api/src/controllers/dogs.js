@@ -10,7 +10,8 @@ const mapDogs = (dogs) => {
         weight_min: splitMed(dog.weight.metric).min,
         weight_max: splitMed(dog.weight.metric).max,
         height_min: splitMed(dog.height.metric).min,
-        height_max: splitMed(dog.height.metric).max
+        height_max: splitMed(dog.height.metric).max,
+        temperament: dog.temperament
     }));
 };
 
@@ -41,7 +42,7 @@ const getDogs = async () => {
         const dogsFromApi = await getDogsFromApi()
         const mapeoDogs = mapDogs(dogsFromApi);
 
-        console.log(mapeoDogs);
+
         return mapeoDogs;
     } catch (error) {
         console.error(error);
@@ -60,7 +61,7 @@ const getDBDog = async () => {
             },
         }
     })
-    console.log(dogsDB);
+
     return dogsDB;
 }
 
@@ -79,7 +80,7 @@ const getDogsByID = async (id) => {
 
 const getDogsByName = async (name) => {
     const dogs = await getDogs();
-    const dogByName = dogs.filter(dog => { console.log("nombre", dog.name, name); return dog.name.toLowerCase().includes(name.toLowerCase()) })
+    const dogByName = dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
     if (dogByName.length > 0) {
         return dogByName
     } else {
