@@ -3,7 +3,7 @@ import "./temperamentsFilter.styles.css";
 
 const TemperamentsFilter = ({ form, allTemperaments, temperamentsHandler }) => {
   return (
-    <div className="container">
+    <div className="container-temp">
       <h1>Filter by temperament</h1>
       <select value="" onChange={temperamentsHandler}>
         <option value="" disabled>

@@ -4,10 +4,11 @@ import { React } from "react";
 import "./cards.styles.css";
 
 const Cards = ({ dogs }) => {
+  console.log(dogs);
   const loading = useSelector((state) => state.loading);
 
   return (
-    <div className="container">
+    <div className="container-cards">
       {loading ? (
         <>
           {dogs.length > 0 ? (

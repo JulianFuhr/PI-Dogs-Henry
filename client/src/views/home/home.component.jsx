@@ -45,7 +45,7 @@ const Home = () => {
     dispatch(resetDog());
     dispatch(resetDogs());
     dispatch(resetFilter());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (filter === true) {
@@ -129,7 +129,7 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-home">
       <div className="searchSortFilterBar">
         <ul>
           <li>

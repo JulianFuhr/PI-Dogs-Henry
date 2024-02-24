@@ -24,7 +24,7 @@ const Pagination = ({
   }
 
   return (
-    <div className="buttons">
+    <div className="buttons-pag">
       <button
         onClick={() => firstHandler(firstPage)}
         className={

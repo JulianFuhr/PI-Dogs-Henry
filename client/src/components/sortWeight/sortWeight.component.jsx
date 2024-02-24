@@ -12,7 +12,7 @@ const SortWeight = ({ dogs }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container-wei">
       <h1> Sort by weight</h1>
       <select value="" onChange={sortHandlerLH}>
         <option value="" disabled>

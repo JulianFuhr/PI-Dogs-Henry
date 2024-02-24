@@ -1,7 +1,7 @@
 import { useState, useEffect, React } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTemperaments } from "../../redux/actions";
-import style from "./create.styles.css";
+import "./create.styles.css";
 import axios from "axios";
 
 const Create = () => {
@@ -22,14 +22,14 @@ const Create = () => {
   const [form, setForm] = useState({
     name: "",
     image: "",
-    minHeight: 0,
-    maxHeight: 0,
-    minWeight: 0,
-    maxWeight: 0,
-    minLifeSpan: 0,
-    maxLifeSpan: 0,
+    height_min: 0,
+    height_max: 0,
+    weight_min: 0,
+    weight_max: 0,
+    life_span: 0,
     temperaments: [],
   });
+  console.log(form);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -51,8 +51,13 @@ const Create = () => {
     const err = onValidate(form);
     if (err === null) {
       setLoading(true);
+      const formulario = {
+        ...form,
+        temperaments: form.temperaments.map((temp) => temp.id),
+      };
+      console.log(formulario);
       axios
-        .post("http://localhost:3001/dogs", form)
+        .post("http://localhost:3001/dogs", formulario)
         .then((res) => {
           setIsApiError(false);
           setApiResponse(res.data.message);
@@ -62,12 +67,11 @@ const Create = () => {
           setForm({
             name: "",
             image: "",
-            minHeight: 0,
-            maxHeight: 0,
-            minWeight: 0,
-            maxWeight: 0,
-            minLifeSpan: 0,
-            maxLifeSpan: 0,
+            height_min: 0,
+            height_max: 0,
+            weight_min: 0,
+            weight_max: 0,
+            life_span: 0,
             temperaments: [],
           });
         })
@@ -84,9 +88,11 @@ const Create = () => {
   };
 
   function selectHandler(event) {
+    const temperament = JSON.parse(event.target.value);
+    console.log(temperament);
     setForm({
       ...form,
-      temperaments: [...form.temperaments, event.target.value],
+      temperaments: [...form.temperaments, temperament],
     });
   }
 
@@ -112,71 +118,57 @@ const Create = () => {
       isError = true;
     }
     if (
-      form.minHeight <= 0 ||
-      parseInt(form.minHeight) >= parseInt(form.maxHeight)
+      form.height_min <= 0 ||
+      parseInt(form.height_min) >= parseInt(form.height_max)
     ) {
-      error.minHeight =
+      error.height_min =
         "The minimum height cannot be less than 0 or greater than the maximum height";
       isError = true;
-    } else if (form.minHeight > 100) {
-      error.minHeight = "The height cannot exceed 100 centimeters";
+    } else if (form.height_min > 100) {
+      error.height_min = "The height cannot exceed 100 centimeters";
       isError = true;
     }
     if (
-      form.maxHeight <= 0 ||
-      parseInt(form.minHeight) >= parseInt(form.maxHeight)
+      form.height_max <= 0 ||
+      parseInt(form.height_min) >= parseInt(form.height_max)
     ) {
-      error.maxHeight =
+      error.height_max =
         "The maximum height cannot be less than 0 or less than the minimum height";
       isError = true;
-    } else if (form.maxHeight > 100) {
-      error.minHeight = "The height cannot exceed 100 centimeters";
+    } else if (form.height_max > 100) {
+      error.height_min = "The height cannot exceed 100 centimeters";
       isError = true;
     }
     if (
-      form.minWeight <= 0 ||
-      parseInt(form.minWeight) >= parseInt(form.maxWeight)
+      form.weight_min <= 0 ||
+      parseInt(form.weight_min) >= parseInt(form.weight_max)
     ) {
-      error.minWeight =
+      error.weight_min =
         "The minimum weight cannot be less than 0 or greater than the maximum weight";
       isError = true;
-    } else if (form.minWeight > 100) {
-      error.minHeight = "The weight cannot exceed 100 kilograms";
+    } else if (form.weight_min > 100) {
+      error.height_min = "The weight cannot exceed 100 kilograms";
       isError = true;
     }
     if (
-      form.maxWeight <= 0 ||
-      parseInt(form.minWeight) >= parseInt(form.maxWeight)
+      form.weight_max <= 0 ||
+      parseInt(form.weight_min) >= parseInt(form.weight_max)
     ) {
-      error.maxWeight =
+      error.weight_max =
         "The maximum weight cannot be less than 0 or less than the minimum weight";
       isError = true;
-    } else if (form.minWeight > 100) {
-      error.minHeight = "The weight cannot exceed 100 kilograms";
+    } else if (form.weight_min > 100) {
+      error.height_min = "The weight cannot exceed 100 kilograms";
       isError = true;
     }
-    if (
-      form.minLifeSpan <= 0 ||
-      parseInt(form.minLifeSpan) >= parseInt(form.maxLifeSpan)
-    ) {
-      error.minLifeSpan =
-        "The minimum life span cannot be less than 0 or greater than the maximum life span";
+    if (form.life_span <= 0) {
+      error.life_span = "The minimum life span cannot be less than 0";
       isError = true;
-    } else if (form.minLifeSpan > 20) {
-      error.minLifeSpan = "The life span cannot exceed 20 years";
+    } else if (form.life_span > 20) {
+      error.life_span = "The life span cannot exceed 20 years";
       isError = true;
     }
-    if (
-      form.maxLifeSpan <= 0 ||
-      parseInt(form.minLifeSpan) >= parseInt(form.maxLifeSpan)
-    ) {
-      error.maxLifeSpan =
-        "The maximum life span cannot be less than 0 or less than the minimum life span";
-      isError = true;
-    } else if (form.maxLifeSpan > 20) {
-      error.maxLifeSpan = "The life span cannot exceed 20 years";
-      isError = true;
-    }
+
     if (form.temperaments.length <= 0) {
       error.temperaments = "You must assign at least one temperament";
       isError = true;
@@ -185,17 +177,17 @@ const Create = () => {
   };
 
   return (
-    <form onSubmit={submitHandler} className={style.form}>
+    <form onSubmit={submitHandler} className="form">
       {modal && (
-        <div className={style.modal}>
-          <div onClick={toggleModal} className={style.overlay}></div>
-          <div className={style.modalContent}>
+        <div className="modal">
+          <div onClick={toggleModal} className="overlay"></div>
+          <div className="modalContent">
             {!loading ? (
               <>
                 {isApiError ? (
                   <>
                     <img
-                      className={style.imgNotCreate}
+                      className="imgNotCreate"
                       src="notCreate-icon.png"
                       alt="create img"
                     ></img>
@@ -204,7 +196,7 @@ const Create = () => {
                 ) : (
                   <>
                     <img
-                      className={style.imgCreate}
+                      className="imgCreate"
                       src="create-icon.png"
                       alt="create img"
                     ></img>
@@ -216,19 +208,19 @@ const Create = () => {
             ) : (
               <>
                 <img
-                  className={style.imgNotCreate}
+                  className="imgNotCreate"
                   src="loading.gif"
                   alt="loading img"
                 ></img>
               </>
             )}
-            <button className={style.closeModal} onClick={toggleModal}>
+            <button className="closeModal" onClick={toggleModal}>
               X
             </button>
           </div>
         </div>
       )}
-      <div className={style.title}>
+      <div className="titlecreate">
         <h2> CREATE A DOG! </h2>
       </div>
       <label>Name: </label>
@@ -238,11 +230,11 @@ const Create = () => {
         name="name"
         onChange={changeHandler}
       />
-      <span className={style.error}>
+      <span className="errorcreate">
         {errors.name && (
           <>
-            <img className={style.img} src="error-icon.png" alt="error"></img>
-            <span className={style.span}>{errors.name}</span>
+            <img className="imgCreate" src="error-icon.png" alt="error"></img>
+            <span className="spanCreate">{errors.name}</span>
           </>
         )}
       </span>
@@ -254,15 +246,15 @@ const Create = () => {
         name="image"
         onChange={changeHandler}
       />
-      <span className={style.error}>
+      <span className="errorcreate">
         {errors.image && (
           <>
             <img
-              className={style.img}
+              className="imgCreate"
               src="error-icon.png"
               alt="error img"
             ></img>
-            <span className={style.span}>{errors.image}</span>
+            <span className="spanCreate">{errors.image}</span>
           </>
         )}
       </span>
@@ -270,19 +262,19 @@ const Create = () => {
       <label>Min. Height: </label>
       <input
         type="number"
-        value={form.minHeight}
-        name="minHeight"
+        value={form.height_min}
+        name="height_min"
         onChange={changeHandler}
       />
-      <span className={style.error}>
-        {errors.minHeight && (
+      <span className="errorcreate">
+        {errors.height_min && (
           <>
             <img
-              className={style.img}
+              className="imgCreate"
               src="error-icon.png"
               alt="error img"
             ></img>
-            <span className={style.span}>{errors.minHeight}</span>
+            <span className="spanCreate">{errors.height_min}</span>
           </>
         )}
       </span>
@@ -290,19 +282,19 @@ const Create = () => {
       <label>Max. Height: </label>
       <input
         type="number"
-        value={form.maxHeight}
-        name="maxHeight"
+        value={form.height_max}
+        name="height_max"
         onChange={changeHandler}
       />
-      <span className={style.error}>
-        {errors.maxHeight && (
+      <span className="errorcreate">
+        {errors.height_max && (
           <>
             <img
-              className={style.img}
+              className="imgCreate"
               src="error-icon.png"
               alt="error img"
             ></img>
-            <span className={style.span}>{errors.maxHeight}</span>
+            <span className="spanCreate">{errors.height_max}</span>
           </>
         )}
       </span>
@@ -310,19 +302,19 @@ const Create = () => {
       <label>Min Weight: </label>
       <input
         type="number"
-        value={form.minWeight}
-        name="minWeight"
+        value={form.weight_min}
+        name="weight_min"
         onChange={changeHandler}
       />
-      <span className={style.error}>
-        {errors.minWeight && (
+      <span className="errorcreate">
+        {errors.weight_min && (
           <>
             <img
-              className={style.img}
+              className="imgCreate"
               src="error-icon.png"
               alt="error img"
             ></img>
-            <span className={style.span}>{errors.minWeight}</span>
+            <span className="spanCreate">{errors.weight_min}</span>
           </>
         )}
       </span>
@@ -330,86 +322,66 @@ const Create = () => {
       <label>Max Weight: </label>
       <input
         type="number"
-        value={form.maxWeight}
-        name="maxWeight"
+        value={form.weight_max}
+        name="weight_max"
         onChange={changeHandler}
       />
-      <span className={style.error}>
-        {errors.maxWeight && (
+      <span className="errorcreate">
+        {errors.weight_max && (
           <>
             <img
-              className={style.img}
+              className="imgCreate"
               src="error-icon.png"
               alt="error img"
             ></img>
-            <span className={style.span}>{errors.maxWeight}</span>
+            <span className="spanCreate">{errors.weight_max}</span>
           </>
         )}
       </span>
       <br />
-      <label>Min Life Span: </label>
+      <label> Life Span: </label>
       <input
         type="number"
-        value={form.minLifeSpan}
-        name="minLifeSpan"
+        value={form.life_span}
+        name="life_span"
         onChange={changeHandler}
       />
-      <span className={style.error}>
-        {errors.minLifeSpan && (
+      <span className="errorcreate">
+        {errors.life_span && (
           <>
             <img
-              className={style.img}
+              className="imgCreate"
               src="error-icon.png"
               alt="error img"
             ></img>
-            <span className={style.span}>{errors.minLifeSpan}</span>
-          </>
-        )}
-      </span>
-      <br />
-      <label>Max Life Span: </label>
-      <input
-        type="number"
-        value={form.maxLifeSpan}
-        name="maxLifeSpan"
-        onChange={changeHandler}
-      />
-      <span className={style.error}>
-        {errors.maxLifeSpan && (
-          <>
-            <img
-              className={style.img}
-              src="error-icon.png"
-              alt="error img"
-            ></img>
-            <span className={style.span}>{errors.maxLifeSpan}</span>
+            <span className="spanCreate">{errors.life_span}</span>
           </>
         )}
       </span>
       <br />
       <label>Temperaments: </label>
       <select onChange={selectHandler}>
-        <option disabled defaultValue selected>
+        <option disabled value="">
           {" "}
           Select one or more temperaments
         </option>
         {allTemperaments.map((temp) => {
           return (
-            <option key={temp.id} name={temp.name}>
+            <option value={JSON.stringify(temp)} key={temp.id} name={temp}>
               {temp.name}
             </option>
           );
         })}
       </select>
-      <span className={style.error}>
+      <span className="errorcreate">
         {errors.temperaments && (
           <>
             <img
-              className={style.img}
+              className="imgCreate"
               src="error-icon.png"
               alt="error img"
             ></img>
-            <span className={style.span}>{errors.temperaments}</span>
+            <span className="spanCreate">{errors.temperaments}</span>
           </>
         )}
       </span>
@@ -418,15 +390,15 @@ const Create = () => {
       <div>
         {form.temperaments.map((el) => (
           <>
-            <span key={el}>{el} </span>
-            <button onClick={() => deleteHandler(el)} className={style.xButton}>
+            <span key={el.id}>{el.name} </span>
+            <button onClick={() => deleteHandler(el)} className="xButton">
               x
             </button>
           </>
         ))}
       </div>
       <br />
-      <button type="submit" className={style.submitButton}>
+      <button type="submit" className="submitButton">
         Create!
       </button>
     </form>

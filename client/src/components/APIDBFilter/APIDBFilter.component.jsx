@@ -1,9 +1,9 @@
 import React from "react";
-import style from "./APIDBFilter.styles.css";
+import "./APIDBFilter.styles.css";
 
 const APIDBFilter = ({ APIDBHandler, formAPIDB }) => {
   return (
-    <div className={style.container}>
+    <div className="container-APIDBFilter">
       <h1>Filter by from API or DB</h1>
       <select value="" onChange={APIDBHandler}>
         <option disabled value="">

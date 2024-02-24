@@ -5,18 +5,21 @@ import "./landing.styles.css";
 
 const LandingPage = () => {
   return (
-    <div className="body">
-      <title className="title">Landing Page</title>
-      <div className="container">
-        <br />
-        <h1 className="h1">Dogs!</h1>
-        <br />
-        <p className="text">En este proyecto veras informacion de cada perro</p>
-        <Link to="/home">
-          <button className="boton">Entrar</button>
-        </Link>
-      </div>
-    </div>
+    <body>
+      <section className="full">
+        <div className="container-landing">
+          <br />
+          <h1 className="h1-land">Dogs!</h1>
+          <br />
+          <p className="text-land">
+            En éste proyecto veras información de cada perro
+          </p>
+          <Link to="/home">
+            <button className="boton-in">Entrar</button>
+          </Link>
+        </div>
+      </section>
+    </body>
   );
 };
 

@@ -22,19 +22,21 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="container">
-      <h1> Search </h1>
-      <input
-        id="search"
-        type="search"
-        placeholder="Search breed..."
-        onChange={searchHandler}
-        value={search.name}
-      />
-      <button type="submit" onClick={submitHandler} value={search.name}>
-        Search
-      </button>
-    </div>
+    <body className="bodysearch">
+      <div className="container-search">
+        <input
+          className="inputsearch"
+          id="search"
+          type="search"
+          placeholder="Search breed..."
+          onChange={searchHandler}
+          value={search.name}
+        />
+        <button type="submit" onClick={submitHandler} value={search.name}>
+          Search
+        </button>
+      </div>
+    </body>
   );
 };
 

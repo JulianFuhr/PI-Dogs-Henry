@@ -17,7 +17,7 @@ const SortAZ = ({ dogs }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container-az">
       <h1> Sort by name </h1>
       <select value={sortValue} onChange={sortHandlerAZ}>
         <option value="" disabled>

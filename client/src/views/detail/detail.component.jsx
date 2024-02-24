@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDogById, resetLoading } from "../../redux/actions";
 import CardID from "../../components/CardID/cardID.component";
+import "./detail.styles.css";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,8 @@ const Detail = () => {
   }, [dispatch, id]);
 
   return (
-    <div>
-      <CardID loading={loading} />
+    <div className="container-detail">
+      <CardID loading={loading} className="body" />
     </div>
   );
 };

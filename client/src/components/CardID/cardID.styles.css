@@ -1,4 +1,4 @@
-.card {
+.cardID {
   width: 1200px;
   height: 450px;
   border-radius: 10px;
@@ -9,51 +9,6 @@
   text-align: center;
   background: #f1f1f1;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
-.img {
-  width: 60%;
-  height: 100%;
-  background-size: cover;
-}
-
-.container {
-  width: 40%;
-  height: 100%;
-  display: flexbox;
-}
-
-.container h1 {
-  margin-block-start: 1.5em;
-  margin-block-end: 0.67em;
-}
-
-.container h4 {
-  margin-block-start: 1em;
-  margin-block-end: 0.5em;
-}
-
-.container span {
-  margin-block-start: 0.5em;
-  margin-block-end: 0.5em;
-}
-
-.name {
-  color: #2e6189;
-}
-
-.container p {
-  color: #029ca6;
-  font-size: 15px;
-}
-
-.container span {
-  color: black;
-  font-size: 15px;
-}
-
-body.active-modal {
-  overflow-y: hidden;
 }
 
 .modal,
@@ -67,16 +22,8 @@ body.active-modal {
   position: fixed;
 }
 
-.imgNotCreate {
-  height: 150px;
-}
-
-.imgCreate {
-  height: 150px;
-}
-
 .overlay {
-  background: rgba(49, 49, 49, 0.8);
+  background: rgba(99, 185, 241, 0.8);
 }
 
 .modalContent {
@@ -92,24 +39,25 @@ body.active-modal {
   min-width: 300px;
 }
 
-.closeModal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 7px;
-  background: #029ca6;
+.imgNotCreate {
+  height: 150px;
+}
+
+.buttonConfirm {
+  position: relative;
+  border-radius: 12px 12px 12px 12px;
+  width: 100px;
+  height: 20px;
+  border: none;
+  outline: none;
+  background: #ee270d;
   color: #f1f1f1;
   cursor: pointer;
 }
 
-.closeModal:hover {
-  background: #2e6189;
+.buttonConfirm:hover {
+  background: #a50000;
   transition: 0.5s;
-}
-
-.modDel {
-  margin-block-start: 1em;
-  margin-block-end: 0.5em;
 }
 
 .buttonCancel {
@@ -129,21 +77,70 @@ body.active-modal {
   transition: 0.5s;
 }
 
-.buttonConfirm {
-  position: relative;
-  border-radius: 12px 12px 12px 12px;
-  width: 100px;
-  height: 20px;
-  border: none;
-  outline: none;
-  background: #ee270d;
+.closeModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+  background: #029ca6;
   color: #f1f1f1;
   cursor: pointer;
 }
 
-.buttonConfirm:hover {
-  background: #a50000;
+.closeModal:hover {
+  background: #2e6189;
   transition: 0.5s;
+}
+
+.img {
+  width: 250%;
+  height: 250%;
+  background-size: cover;
+}
+
+.container-data {
+  width: 40%;
+  height: 100%;
+  display: flexbox;
+}
+
+.name {
+  margin-block-start: 1.5em;
+  margin-block-end: 0.67em;
+}
+
+.h4 {
+  margin-block-start: 1em;
+  margin-block-end: 0.5em;
+}
+
+.name {
+  color: #2e6189;
+}
+
+.p {
+  color: #185f5f;
+  font-size: 15px;
+}
+
+.span {
+  color: rgb(106, 166, 245);
+  font-size: 15px;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+.active-modal {
+  overflow-y: hidden;
+}
+
+.imgCreate {
+  height: 150px;
+}
+
+.modDel {
+  margin-block-start: 1em;
+  margin-block-end: 0.5em;
 }
 
 .buttonModify {

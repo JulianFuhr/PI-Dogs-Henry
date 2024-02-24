@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Card = (props) => {
   return (
     <div className="Card">
-      <img className="img" src={props.image} alt={props.name} />
-      <h2 className="name">{props.name}</h2>
-      <p className="temperament">{props.temperaments}</p>
+      <img className="imgcard" src={props.image} alt={props.name} />
+      <h2 className="name">Name: {props.name}</h2>
+      <p className="temperament">Temperaments: {props.temperaments}</p>
       <p className="weight">
-        {props.minWeight} - {props.maxWeight} kg
+        Weight: {props.minWeight} - {props.maxWeight} kg
       </p>
       {props.id === "no-info" ? (
         <>
@@ -16,7 +16,7 @@ const Card = (props) => {
         </>
       ) : (
         <Link to={`/home/${props.id}`}>
-          <p className=".enlace">Details</p>
+          <p className="btnenlace">Details</p>
         </Link>
       )}
     </div>

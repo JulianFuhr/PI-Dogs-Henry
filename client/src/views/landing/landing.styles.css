@@ -1,53 +1,70 @@
-.body {
-  background-image: url(./gabriel-crismariu-IgQo1_gUzBY-unsplash.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-}
-.title {
+body {
   padding: 0;
   margin: 0;
   width: 100%;
   height: 100%;
+  /* overflow: hidden; */
 }
 
-.container {
-  width: 95%;
-  max-width: 1200px;
+.full {
+  height: 100vh;
+  background: rgba(73, 73, 73, 0.1); /* Fondo blanco con 70% de transparencia */
+  position: relative; /* Añadido para z-index funcione */
+  display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
-.h1 {
-  color: #f1f1f1;
+.full::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("gabriel-crismariu-IgQo1_gUzBY-unsplash.jpg") no-repeat center
+    center;
+  background-size: cover;
+  opacity: 0.9; /* Ajusta la opacidad de la imagen de fondo */
+  z-index: -1; /* Coloca la imagen de fondo detrás del contenido */
+}
+
+.container-landing {
+  text-align: center;
+}
+
+.h1-land {
+  margin: auto;
+  text-align: center;
+  color: #f2fdfa80;
   font-size: 500%;
-  text-shadow: 0 0 10px rgb(240, 104, 104);
-}
-
-.text {
-  color: #f1f1f1;
   text-shadow: 0 0 10px black;
 }
 
-.boton {
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+.text-land {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 250%;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 0, 0, 0.3);
+  background: #38584e80;
+  padding: 10px;
 }
 
-.boton {
-  position: relative;
-  border-radius: 12px 12px 12px 12px;
-  width: 150px;
-  height: 30px;
-  border: none;
-  outline: none;
-  background: #2e6189;
-  color: #f1f1f1;
-  cursor: pointer;
+.boton-in {
+  border-radius: 6px;
+  text-decoration: none;
+  color: #f2fdfa80;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
+  border: 3px solid;
+  padding: 10px 43px;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f242280;
 }
 
-.boton:hover {
-  background: #0d2c44;
+.boton-in:hover {
+  color: #0d043d;
   transition: 0.5s;
 }

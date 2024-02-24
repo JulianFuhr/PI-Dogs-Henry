@@ -5,20 +5,21 @@ import "./navbar.styles.css";
 
 const NavBar = () => {
   return (
-    <div className="container">
-      <img src="/" alt="img" />
-      <ul>
-        <Link to="/home">
-          <li>Home</li>
-        </Link>
-        <Link to="/create">
-          <li>Create dog!</li>
-        </Link>
-        <Link to="/">
-          <li>Exit</li>
-        </Link>
-      </ul>
-    </div>
+    <nav>
+      <div className="container-navbar">
+        <ul>
+          <Link to="/home">
+            <li>Home</li>
+          </Link>
+          <Link to="/create">
+            <li>Create dog!</li>
+          </Link>
+          <Link to="/">
+            <li>Exit</li>
+          </Link>
+        </ul>
+      </div>
+    </nav>
   );
 };
 

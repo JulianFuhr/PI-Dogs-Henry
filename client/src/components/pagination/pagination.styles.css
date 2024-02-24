@@ -1,12 +1,12 @@
-.buttons {
+.buttons-pag {
+  display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .nextButton {
-  position: relative;
-  border-radius: 0 12px 12px 0;
-  width: 60px;
+  position: static;
+  border-radius: 10px 10px 10px 10px;
+  width: 70px;
   height: 20px;
   border: none;
   outline: none;
@@ -21,9 +21,9 @@
 }
 
 .prevButton {
-  position: relative;
-  border-radius: 12px 0 0 12px;
-  width: 60px;
+  position: static;
+  border-radius: 10px 10px 10px 10px;
+  width: 70px;
   height: 20px;
   border: none;
   outline: none;

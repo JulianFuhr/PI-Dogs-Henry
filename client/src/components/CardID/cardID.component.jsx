@@ -39,7 +39,7 @@ const CardID = ({ loading }) => {
   };
 
   return (
-    <div className="card">
+    <div className="cardID">
       {modal && (
         <div className="modal">
           <div className="overlay"></div>
@@ -94,41 +94,41 @@ const CardID = ({ loading }) => {
                 src="https: //stormgain.com/sites/default/files/news/DOGE%20breed.jpg"
                 alt="does not exist"
               />
-              <div className="container">
+              <div className="container-data">
                 <h1 className="name">The sought breed does not exist</h1>
-                <p>From: does not exist </p>
-                <h4 className="weight">Weight</h4>
-                <span> There is no information</span>
-                <h4 className="height">Height</h4>
+                <p className="p">From: does not exist </p>
+                <h4 className="h4">Weight</h4>
+                <span className="span"> There is no information</span>
+                <h4 className="h4">Height</h4>
+                <span className="span">There is no information</span>
+                <h4 className="h4">Life Span</h4>
                 <span>There is no information</span>
-                <h4 className="lifeSpan">Life Span</h4>
-                <span>There is no information</span>
-                <h4 className="temperaments">Temperament:</h4>
-                <span>There is no information</span>
+                <h4 className="h4">Temperament:</h4>
+                <span className="span">There is no information</span>
               </div>
             </>
           ) : (
             <>
               {" "}
-              <img className="img" src={dog.image} alt={dog.name} />
-              <div className="container">
+              <img className="imagen" src={dog.image} alt={dog.name} />
+              <div className="container-data">
                 <h1 className="name">{dog.name}</h1>
-                <p>From: {dog.from}</p>
-                <h4 className="weight">Weight</h4>
-                <span>
+                <p className="p">From: {dog.from}</p>
+                <h4 className="h4">Weight</h4>
+                <span className="span">
                   {dog.minWeight} - {dog.maxWeight} kgs
                 </span>
-                <h4 className="height">Height</h4>
-                <span>
+                <h4 className="h4">Height</h4>
+                <span className="span">
                   {dog.minHeight} - {dog.maxHeight} cms
                 </span>
-                <h4 className="lifeSpan">Life Span</h4>
-                <span>
+                <h4 className="h4">Life Span</h4>
+                <span className="span">
                   {dog.minLifeSpan} - {dog.maxLifeSpan} years
                 </span>
-                <span>{dog.life_span}</span>
-                <h4 className="temperaments">Temperament:</h4>
-                <span>{dog.temperaments}</span>
+                <span className="span">{dog.life_span}</span>
+                <h4 className="h4">Temperament:</h4>
+                <span className="span">{dog.temperaments}</span>
                 <br />
                 {dog.from === "DataBase" ? (
                   <div className="modDel">
