@@ -1,12 +1,12 @@
 const { Router } = require('express');
 const dogRouter = Router();
-const { getDogs, getDogsByID, getDogsByName, createDog } = require("../controllers/dogs")
+const { getAllDogs, getDogsByID, getDogsByName, createDog } = require("../controllers/dogs")
 
 // Ruta GET para obtener información de un perro
 
 dogRouter.get('/', async (req, res) => {
     try {
-        const dogs = await getDogs();
+        const dogs = await getAllDogs();
         res.send(dogs);
     } catch (err) {
         res.status(400).json({ message: err.message })

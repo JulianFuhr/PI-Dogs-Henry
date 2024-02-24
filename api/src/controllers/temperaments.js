@@ -1,4 +1,4 @@
-const { getDogs } = require("./dogs");
+const { getApiDogs } = require("./dogs");
 const { Temperaments } = require("../db");
 
 
@@ -8,13 +8,16 @@ const getTemperaments = async () => {
         //si existe temp los devuelvo
         //si no existe obtengo los temperamentos de los perros y los inserto en la base de datos
         const temperaments = await Temperaments.findAll({ raw: true });
+
         if (temperaments.length > 0) {
 
             return temperaments
         } else {
 
             //Obtengo la lista de perros
-            const dogsTemp = await getDogs();
+            const dogsTemp = await getApiDogs();
+
+
 
             //pongo un array para almacenar los temps unicos
             const uniqueTemp = new Set();
@@ -33,6 +36,7 @@ const getTemperaments = async () => {
             //para que no haya repetidos
 
             const uniqueTempArray = Array.from(uniqueTemp);
+
 
 
             //creo los temps en la BD

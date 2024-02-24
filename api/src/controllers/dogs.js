@@ -1,4 +1,4 @@
-const { Dog, DogsTemperaments } = require("../db");
+const { Dog, Temperaments, DogsTemperaments } = require("../db");
 const { getDogsFromApi } = require("../services/dogs.service");
 
 const mapDogs = (dogs) => {
@@ -12,6 +12,21 @@ const mapDogs = (dogs) => {
         height_min: splitMed(dog.height.metric).min,
         height_max: splitMed(dog.height.metric).max,
         temperament: dog.temperament
+    }));
+};
+
+const mapDBDogs = (dogs) => {
+    console.log(dogs);
+    return dogs.map((dog) => ({
+        id: dog.id,
+        name: dog.name,
+        image: dog.image,
+        life_span: dog.life_span,
+        weight_min: dog.weight_min,
+        weight_max: dog.weight_max,
+        height_min: dog.height_min,
+        height_max: dog.height_max,
+        temperament: dog.Temperaments.map(temperament => temperament.name).join()
     }));
 };
 
@@ -37,11 +52,10 @@ const splitMed = (medida) => {
 
 
 
-const getDogs = async () => {
+const getApiDogs = async () => {
     try {
         const dogsFromApi = await getDogsFromApi()
         const mapeoDogs = mapDogs(dogsFromApi);
-
 
         return mapeoDogs;
     } catch (error) {
@@ -54,33 +68,32 @@ const getDogs = async () => {
 const getDBDog = async () => {
     const dogsDB = await Dog.findAll({
         include: {
-            model: DogsTemperaments,
+            model: Temperaments,
             attributes: ['name'],
-            trough: {
+            through: {
                 attributes: [],
             },
         }
     })
-
-    return dogsDB;
+    return mapDBDogs(dogsDB);
 }
 
 const getAllDogs = async () => {
-    const apiDogs = await getDogs();
+    const apiDogs = await getApiDogs();
     const dbInfo = await getDBDog();
     const infoTotal = [...apiDogs, ...dbInfo];
     return infoTotal;
 }
 
 const getDogsByID = async (id) => {
-    const dogs = await getDogs();
+    const dogs = await getAllDogs();
     const dogByID = dogs.find(dog => dog.id == id);
     return dogByID;
 }
 
 const getDogsByName = async (name) => {
-    const dogs = await getDogs();
-    const dogByName = dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
+    const dogs = await getAllDogs();
+    const dogByName = dogs.filter(dog => { console.log("nombre", dog.name, name); return dog.name.toLowerCase().includes(name.toLowerCase()) })
     if (dogByName.length > 0) {
         return dogByName
     } else {
@@ -124,7 +137,7 @@ const createDog = async ({ name, image, weight_min, weight_max, height_max, heig
 
 
 module.exports = {
-    getDogs,
+    getApiDogs,
     getDogsByID,
     getDogsByName,
     createDog,
