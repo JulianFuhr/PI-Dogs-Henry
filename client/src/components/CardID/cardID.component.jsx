@@ -116,27 +116,19 @@ const CardID = ({ loading }) => {
                 <p className="p">From: {dog.from}</p>
                 <h4 className="h4">Weight</h4>
                 <span className="span">
-                  {dog.minWeight} - {dog.maxWeight} kgs
+                  {dog.weight_min} - {dog.weight_max} kgs
                 </span>
                 <h4 className="h4">Height</h4>
                 <span className="span">
-                  {dog.minHeight} - {dog.maxHeight} cms
+                  {dog.height_min} - {dog.height_max} cms
                 </span>
                 <h4 className="h4">Life Span</h4>
-                <span className="span">
-                  {dog.minLifeSpan} - {dog.maxLifeSpan} years
-                </span>
-                <span className="span">{dog.life_span}</span>
+                <span className="span">{dog.life_span} years</span>
                 <h4 className="h4">Temperament:</h4>
-                <span className="span">{dog.temperaments}</span>
+                <span className="span">{dog.temperament}</span>
                 <br />
                 {dog.from === "DataBase" ? (
                   <div className="modDel">
-                    <Link to={`/home/modify/${dog.id}`}>
-                      <button className="buttonModify" name="Modify">
-                        Modify
-                      </button>
-                    </Link>
                     <button
                       onClick={() => clicHandler()}
                       className="buttonDelete"
