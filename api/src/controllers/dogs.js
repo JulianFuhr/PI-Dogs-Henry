@@ -11,7 +11,8 @@ const mapDogs = (dogs) => {
         weight_max: splitMed(dog.weight.metric).max,
         height_min: splitMed(dog.height.metric).min,
         height_max: splitMed(dog.height.metric).max,
-        temperament: dog.temperament
+        temperament: dog.temperament,
+        from: "API",
     }));
 };
 
@@ -26,7 +27,8 @@ const mapDBDogs = (dogs) => {
         weight_max: dog.weight_max,
         height_min: dog.height_min,
         height_max: dog.height_max,
-        temperament: dog.Temperaments.map(temperament => temperament.name).join()
+        temperament: dog.Temperaments.map(temperament => temperament.name).join(),
+        from: "DataBase",
     }));
 };
 
