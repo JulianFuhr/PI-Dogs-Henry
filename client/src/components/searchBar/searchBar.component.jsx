@@ -22,7 +22,7 @@ const SearchBar = () => {
   };
 
   return (
-    <body className="bodysearch">
+    <div className="bodysearch">
       <div className="container-search">
         <input
           className="inputsearch"
@@ -36,7 +36,7 @@ const SearchBar = () => {
           Search
         </button>
       </div>
-    </body>
+    </div>
   );
 };
 

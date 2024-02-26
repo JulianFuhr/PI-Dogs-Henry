@@ -5,9 +5,9 @@ import "./landing.styles.css";
 
 const LandingPage = () => {
   return (
-    <body>
+    <div className="container-landing">
       <section className="full">
-        <div className="container-landing">
+        <div className="">
           <br />
           <h1 className="h1-land">Dogs!</h1>
           <br />
@@ -19,7 +19,7 @@ const LandingPage = () => {
           </Link>
         </div>
       </section>
-    </body>
+    </div>
   );
 };
 

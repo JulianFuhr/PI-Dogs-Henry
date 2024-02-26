@@ -1,17 +1,15 @@
 .Card {
   display: flex;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 60px;
+  gap: 20px;
   background-color: rgb(121, 250, 200);
   border: 1px solid rgb(0, 0, 0);
   border-radius: 6px;
   padding: 6px;
+  margin: 0 14px;
   cursor: pointer;
-  -moz-osx-font-smoothing: grayscale;
-  backface-visibility: hidden;
   transform: translateZ(0);
   transition: transform 0, 25s ease-out;
-  margin-left: 80px;
+  align-items: center;
 }
 
 .Card:hover {
@@ -20,13 +18,12 @@
 }
 
 .imgcard {
-  width: 250px;
-  height: 250px;
+  width: 150px;
   border-radius: 10px; /* Ajusta el valor según tus necesidades */
-  background-color: #f0f0f0;
 }
 .name {
-  text-align: center;
+  /* text-align: center; */
+  margin: 0;
   color: #02241b;
   font-weight: 600;
 }
@@ -38,7 +35,6 @@
   font-weight: 600;
   font-size: 20px;
   font-weight: 20px;
-  margin-top: 80px;
 }
 
 .temperament {
@@ -47,7 +43,6 @@
   text-align: center;
   display: flex;
   padding: 10px;
-  margin-top: 75px;
 }
 
 .btnenlace {
@@ -56,7 +51,6 @@
   text-align: inherit;
   display: flex;
   padding: 10px;
-  margin-top: 75px;
+  border-radius: 10px;
   background-color: blueviolet;
-  margin-top: 75px;
 }

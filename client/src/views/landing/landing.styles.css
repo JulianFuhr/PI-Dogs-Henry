@@ -1,13 +1,14 @@
-body {
+.container-landing {
   padding: 0;
   margin: 0;
   width: 100%;
   height: 100%;
-  /* overflow: hidden; */
+  overflow: hidden;
+  text-align: center;
 }
 
 .full {
-  height: 100vh;
+  height: 97vh;
   background: rgba(73, 73, 73, 0.1); /* Fondo blanco con 70% de transparencia */
   position: relative; /* Añadido para z-index funcione */
   display: flex;
@@ -27,10 +28,6 @@ body {
   background-size: cover;
   opacity: 0.9; /* Ajusta la opacidad de la imagen de fondo */
   z-index: -1; /* Coloca la imagen de fondo detrás del contenido */
-}
-
-.container-landing {
-  text-align: center;
 }
 
 .h1-land {
@@ -67,4 +64,5 @@ body {
 .boton-in:hover {
   color: #0d043d;
   transition: 0.5s;
+  cursor: pointer;
 }

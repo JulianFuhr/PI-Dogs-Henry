@@ -142,7 +142,7 @@ const Home = () => {
             <SortWeight dogs={dogs} />
           </li>
           <li>
-            <APIDBFilter formAPIDB={formAPIDB} APIDBHandler={APIDBHandler} />
+            <APIDBFilter dogs={dogs} />
           </li>
           <li>
             <TemperamentsFilter

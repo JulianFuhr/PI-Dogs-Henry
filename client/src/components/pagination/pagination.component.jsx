@@ -27,17 +27,15 @@ const Pagination = ({
     <div className="buttons-pag">
       <button
         onClick={() => firstHandler(firstPage)}
-        className={
-          currentPage === firstPage ? "prevButtonActive" : "prevButton"
-        }
+        disabled={!currentPage}
+        className="button"
       >
         First
       </button>
       <button
         onClick={prevHandler}
-        className={
-          currentPage === firstPage ? "prevButtonActive" : "prevButton"
-        }
+        disabled={!currentPage}
+        className="button"
       >
         Prev
       </button>
@@ -61,13 +59,15 @@ const Pagination = ({
       })}
       <button
         onClick={nextHandler}
-        className={currentPage === lastPage ? "nextButtonActive" : "nextButton"}
+        disabled={currentPage === lastPage}      
+        className="button"  
       >
         Next
       </button>
       <button
         onClick={() => lastHandler(lastPage)}
-        className={currentPage === lastPage ? "nextButtonActive" : "nextButton"}
+        disabled={currentPage === lastPage}        
+        className="button"
       >
         Last
       </button>

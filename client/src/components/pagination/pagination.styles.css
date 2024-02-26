@@ -1,40 +1,7 @@
 .buttons-pag {
   display: flex;
   justify-content: center;
-}
-
-.nextButton {
-  position: static;
-  border-radius: 10px 10px 10px 10px;
-  width: 70px;
-  height: 20px;
-  border: none;
-  outline: none;
-  background: #029ca6;
-  color: #f1f1f1;
-  cursor: pointer;
-}
-
-.nextButton:hover {
-  background: #2e6189;
-  transition: 0.5s;
-}
-
-.prevButton {
-  position: static;
-  border-radius: 10px 10px 10px 10px;
-  width: 70px;
-  height: 20px;
-  border: none;
-  outline: none;
-  background: #029ca6;
-  color: #f1f1f1;
-  cursor: pointer;
-}
-
-.prevButton:hover {
-  background: #2e6189;
-  transition: 0.5s;
+  gap: 10px;
 }
 
 .pageButton {
@@ -65,24 +32,24 @@
   color: #f1f1f1;
 }
 
-.prevButtonActive {
-  position: relative;
-  border-radius: 12px 0 0 12px;
-  width: 60px;
+.buttons-pag .button {
+  position: static;
+  border-radius: 10px 10px 10px 10px;
+  width: 70px;
   height: 20px;
   border: none;
   outline: none;
-  background: #2e6189;
+  background: #029ca6;
   color: #f1f1f1;
+  cursor: pointer;
 }
 
-.nextButtonActive {
-  position: relative;
-  border-radius: 0 12px 12px 0;
-  width: 60px;
-  height: 20px;
-  border: none;
-  outline: none;
+button.active {
+  border-radius: 12px;
   background: #2e6189;
-  color: #f1f1f1;
+}
+
+button:disabled {
+  opacity: 0.4;
+  background-color: gray;
 }

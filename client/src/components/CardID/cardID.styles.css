@@ -9,6 +9,12 @@
   text-align: center;
   background: #f1f1f1;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  .name {
+    color: #2e6189;
+    margin-block-start: 1.5em;
+    margin-block-end: 0.67em;
+  }
 }
 
 .modal,
@@ -104,18 +110,9 @@
   display: flexbox;
 }
 
-.name {
-  margin-block-start: 1.5em;
-  margin-block-end: 0.67em;
-}
-
 .h4 {
   margin-block-start: 1em;
   margin-block-end: 0.5em;
-}
-
-.name {
-  color: #2e6189;
 }
 
 .p {

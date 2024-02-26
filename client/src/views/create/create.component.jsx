@@ -177,6 +177,7 @@ const Create = () => {
   };
 
   return (
+    <div className="container-create-form">
     <form onSubmit={submitHandler} className="form">
       {modal && (
         <div className="modal">
@@ -230,18 +231,11 @@ const Create = () => {
         name="name"
         onChange={changeHandler}
       />
-      <span className="errorcreate">
         {errors.name && (
-          <>
-            <img
-              className="imgCreate"
-              src="client\assets\cheque.png"
-              alt="error"
-            ></img>
+          <>            
             <span className="spanCreate">{errors.name}</span>
           </>
         )}
-      </span>
       <br />
       <label>Image URL: </label>
       <input
@@ -250,18 +244,11 @@ const Create = () => {
         name="image"
         onChange={changeHandler}
       />
-      <span className="errorcreate">
         {errors.image && (
           <>
-            <img
-              className="imgCreate"
-              src="client\assets\cheque.png"
-              alt="error img"
-            ></img>
             <span className="spanCreate">{errors.image}</span>
           </>
         )}
-      </span>
       <br />
       <label>Min. Height: </label>
       <input
@@ -270,18 +257,11 @@ const Create = () => {
         name="height_min"
         onChange={changeHandler}
       />
-      <span className="errorcreate">
         {errors.height_min && (
           <>
-            <img
-              className="imgCreate"
-              src="client\assets\cheque.png"
-              alt="error img"
-            ></img>
             <span className="spanCreate">{errors.height_min}</span>
           </>
         )}
-      </span>
       <br />
       <label>Max. Height: </label>
       <input
@@ -290,18 +270,11 @@ const Create = () => {
         name="height_max"
         onChange={changeHandler}
       />
-      <span className="errorcreate">
         {errors.height_max && (
           <>
-            <img
-              className="imgCreate"
-              src="client\assets\cheque.png"
-              alt="error img"
-            ></img>
             <span className="spanCreate">{errors.height_max}</span>
           </>
         )}
-      </span>
       <br />
       <label>Min Weight: </label>
       <input
@@ -310,18 +283,11 @@ const Create = () => {
         name="weight_min"
         onChange={changeHandler}
       />
-      <span className="errorcreate">
         {errors.weight_min && (
           <>
-            <img
-              className="imgCreate"
-              src="client\assets\cheque.png"
-              alt="error img"
-            ></img>
             <span className="spanCreate">{errors.weight_min}</span>
           </>
         )}
-      </span>
       <br />
       <label>Max Weight: </label>
       <input
@@ -330,14 +296,11 @@ const Create = () => {
         name="weight_max"
         onChange={changeHandler}
       />
-      <span className="errorcreate">
         {errors.weight_max && (
           <>
-            <img className="imgCreate" src="" alt="error img"></img>
             <span className="spanCreate">{errors.weight_max}</span>
           </>
         )}
-      </span>
       <br />
       <label> Life Span: </label>
       <input
@@ -346,18 +309,11 @@ const Create = () => {
         name="life_span"
         onChange={changeHandler}
       />
-      <span className="errorcreate">
         {errors.life_span && (
-          <>
-            <img
-              className="imgCreate"
-              src="error-icon.png"
-              alt="error img"
-            ></img>
+          <>         
             <span className="spanCreate">{errors.life_span}</span>
           </>
         )}
-      </span>
       <br />
       <label>Temperaments: </label>
       <select onChange={selectHandler}>
@@ -373,18 +329,11 @@ const Create = () => {
           );
         })}
       </select>
-      <span className="errorcreate">
         {errors.temperaments && (
-          <>
-            <img
-              className="imgCreate"
-              src="error-icon.png"
-              alt="error img"
-            ></img>
+          <>     
             <span className="spanCreate">{errors.temperaments}</span>
           </>
         )}
-      </span>
       <br />
       <h4>Selected temperaments: </h4>
       <div>
@@ -402,6 +351,7 @@ const Create = () => {
         Create!
       </button>
     </form>
+    </div>
   );
 };
 

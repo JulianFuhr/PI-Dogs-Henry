@@ -4,13 +4,13 @@ import { React } from "react";
 import "./cards.styles.css";
 
 const Cards = ({ dogs }) => {
-  console.log(dogs);
   const loading = useSelector((state) => state.loading);
 
   return (
     <div className="container-cards">
+
       {loading ? (
-        <>
+        <>  
           {dogs.length > 0 ? (
             <>
               {dogs.map((dog) => {
@@ -43,7 +43,7 @@ const Cards = ({ dogs }) => {
         </>
       ) : (
         <>
-          <img src="/loading.gif" alt="loading img"></img>
+          <img src="https://i.gifer.com/ZKZg.gif" alt="Loading..."  width="100" />
         </>
       )}
     </div>

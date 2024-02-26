@@ -1,3 +1,14 @@
+.container-create-form {
+  display: flex;
+  justify-content: center;
+
+  input, select {
+    height: 30px;
+    border-radius: 16px;
+    padding: 6px;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -12,15 +23,6 @@
   font-size: 20px;
 }
 
-.form select {
-  width: 15%;
-}
-
-.img {
-  height: 100vh;
-  width: 100vw;
-}
-
 .errorcreate {
   position: relative;
   cursor: pointer;
@@ -28,34 +30,13 @@
 }
 
 .spanCreate {
-  position: relative;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  background-color: #000;
-  color: #fff;
-  white-space: nowrap;
+  color: red;
+  /* white-space: wrap; */
   padding: 10px 15px;
-  border-radius: 7px;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.5s ease;
 }
 
-.span::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  transform: translateX(-50%);
-  border: 15px solid;
-  border-color: #000 #0000 #0000 #0000;
-}
-
-.error:hover .span {
-  top: -150%;
-  visibility: visible;
-  opacity: 1;
+.spanCreate::before{
+  content: "⚠ ";  
 }
 
 .submitButton {

@@ -8,12 +8,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding: 10px 7px;
   border-radius: 10px;
   font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.searchSortFilterBar ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 8px;
 }
 
 .searchSortFilterBar ul li {
@@ -26,10 +32,7 @@
 }
 
 .button {
-  position: relative;
-  right: 0px;
-  left: 450px;
-  border-radius: 2px 2px 2px 2px;
+  border-radius: 12px;
   width: 150px;
   height: 50px;
   border: none;
