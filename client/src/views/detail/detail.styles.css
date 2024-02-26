@@ -1,5 +1,5 @@
 .container-detail {
-  background: url(paradetail.jpg);
+  background: url("../../../assets/paradetail.jpg");
   position: absolute;
   right: 0;
   left: 0;

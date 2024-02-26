@@ -22,8 +22,8 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url("gabriel-crismariu-IgQo1_gUzBY-unsplash.jpg") no-repeat center
-    center;
+  background: url("../../../assets/gabriel-crismariu-IgQo1_gUzBY-unsplash.jpg")
+    no-repeat center center;
   background-size: cover;
   opacity: 0.9; /* Ajusta la opacidad de la imagen de fondo */
   z-index: -1; /* Coloca la imagen de fondo detrás del contenido */
@@ -54,7 +54,7 @@ body {
 .boton-in {
   border-radius: 6px;
   text-decoration: none;
-  color: #f2fdfa80;
+  color: #fff;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: bold;
   border: 3px solid;

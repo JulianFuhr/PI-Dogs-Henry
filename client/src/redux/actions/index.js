@@ -93,7 +93,7 @@ export const temperamentFilter = (dogs, value) => {
 
 export const apiDbFilter = (dogs, value) => {
     try {
-
+        console.log("dogs", dogs, value);
         let dogFilter = []
         dogs.forEach(dog => {
             if (dog.from === value) dogFilter.push(dog);
@@ -110,16 +110,17 @@ export const apiDbFilter = (dogs, value) => {
 
 export const sortFilterLH = (dogs, value) => {
     try {
+        console.log("dogs", dogs);
         let dogsSorted = []
         if (value === "high-low") {
             dogsSorted = dogs.sort(
                 (a, b) =>
-                    (a.minWeight < b.minWeight) ? 1 : (a.minWeight > b.minWeight) ? -1 : 0);
+                    (a.weight_min < b.weight_min) ? 1 : (a.weight_min > b.weight_min) ? -1 : 0);
         }
         if (value === "low-high") {
             dogsSorted = dogs.sort(
                 (a, b) =>
-                    (a.minWeight > b.minWeight) ? 1 : (a.minWeight < b.minWeight) ? -1 : 0);
+                    (a.weight_min > b.weight_min) ? 1 : (a.weight_min < b.weight_min) ? -1 : 0);
         }
         return function (dispatch) {
             dispatch({ type: SORT_FILTER_WEIGHT, payload: dogsSorted })

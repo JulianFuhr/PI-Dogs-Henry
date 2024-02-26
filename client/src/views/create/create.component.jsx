@@ -188,7 +188,7 @@ const Create = () => {
                   <>
                     <img
                       className="imgNotCreate"
-                      src="notCreate-icon.png"
+                      src="assets\cheque.png"
                       alt="create img"
                     ></img>
                     <h2>There is an error with the information.</h2>
@@ -197,7 +197,7 @@ const Create = () => {
                   <>
                     <img
                       className="imgCreate"
-                      src="create-icon.png"
+                      src="assets\cheque.png"
                       alt="create img"
                     ></img>
                     <h2>You have created a breed of dog!</h2>
@@ -209,7 +209,7 @@ const Create = () => {
               <>
                 <img
                   className="imgNotCreate"
-                  src="loading.gif"
+                  src="client\assets\cheque.png"
                   alt="loading img"
                 ></img>
               </>
@@ -233,7 +233,11 @@ const Create = () => {
       <span className="errorcreate">
         {errors.name && (
           <>
-            <img className="imgCreate" src="error-icon.png" alt="error"></img>
+            <img
+              className="imgCreate"
+              src="client\assets\cheque.png"
+              alt="error"
+            ></img>
             <span className="spanCreate">{errors.name}</span>
           </>
         )}
@@ -251,7 +255,7 @@ const Create = () => {
           <>
             <img
               className="imgCreate"
-              src="error-icon.png"
+              src="client\assets\cheque.png"
               alt="error img"
             ></img>
             <span className="spanCreate">{errors.image}</span>
@@ -271,7 +275,7 @@ const Create = () => {
           <>
             <img
               className="imgCreate"
-              src="error-icon.png"
+              src="client\assets\cheque.png"
               alt="error img"
             ></img>
             <span className="spanCreate">{errors.height_min}</span>
@@ -291,7 +295,7 @@ const Create = () => {
           <>
             <img
               className="imgCreate"
-              src="error-icon.png"
+              src="client\assets\cheque.png"
               alt="error img"
             ></img>
             <span className="spanCreate">{errors.height_max}</span>
@@ -311,7 +315,7 @@ const Create = () => {
           <>
             <img
               className="imgCreate"
-              src="error-icon.png"
+              src="client\assets\cheque.png"
               alt="error img"
             ></img>
             <span className="spanCreate">{errors.weight_min}</span>
@@ -329,11 +333,7 @@ const Create = () => {
       <span className="errorcreate">
         {errors.weight_max && (
           <>
-            <img
-              className="imgCreate"
-              src="error-icon.png"
-              alt="error img"
-            ></img>
+            <img className="imgCreate" src="" alt="error img"></img>
             <span className="spanCreate">{errors.weight_max}</span>
           </>
         )}

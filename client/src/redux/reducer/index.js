@@ -16,6 +16,7 @@ import {
 
 
 let initialState = {
+    dogsFromBE: [],
     dogs: [],
     dog: [],
     temperaments: [],
@@ -26,7 +27,7 @@ let initialState = {
 function rootReducer(state = initialState, action) {
     switch (action.type) {
         case GET_DOGS:
-            return { ...state, dogs: action.payload, filter: true, loading: true }
+            return { ...state, dogsFromBE: action.payload, dogs: action.payload, filter: true, loading: true }
         case GET_ALL_TEMPERAMENT:
             return { ...state, temperaments: action.payload }
         case GET_DOG_BY_ID:

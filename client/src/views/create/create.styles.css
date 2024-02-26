@@ -1,12 +1,10 @@
 .form {
-  width: 100vw;
-  height: 100vh;
-  margin: auto;
-  background: #f1f1f1;
-  padding: 20px 20px;
-  box-sizing: border-box;
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(171, 218, 225);
+  padding: 40px;
   border-radius: 10px;
+  border: 1px rgb(168, 167, 167) solid;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
@@ -19,7 +17,8 @@
 }
 
 .img {
-  height: 150px;
+  height: 100vh;
+  width: 100vw;
 }
 
 .errorcreate {
@@ -29,7 +28,7 @@
 }
 
 .spanCreate {
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 0;
   transform: translateX(-50%);

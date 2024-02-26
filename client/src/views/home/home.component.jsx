@@ -23,7 +23,7 @@ import "./home.styles.css";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const dogs = useSelector((state) => state.dogs);
+  const { dogs, dogsFromBE } = useSelector((state) => state);
   const allTemperaments = useSelector((state) => state.temperaments);
   const filter = useSelector((state) => state.filter);
   const dogsPerPage = 8;
@@ -72,7 +72,7 @@ const Home = () => {
       ...formAPIDB,
       filterApiDB: [...formAPIDB.filterApiDB, value],
     });
-    dispatch(apiDbFilter(dogs, value));
+    dispatch(apiDbFilter(dogsFromBE, value));
   };
 
   const firstHandler = (firstPage) => {
