@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getDogs,
-  apiDbFilter,
+  // apiDbFilter,
   getAllTemperaments,
   resetFilter,
   resetDog,
@@ -23,7 +23,8 @@ import "./home.styles.css";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { dogs, dogsFromBE } = useSelector((state) => state);
+  const dogs = useSelector((state) => state.dogs);
+  const dogsFromBE = useSelector((state) => state.dogsFromBE);
   const allTemperaments = useSelector((state) => state.temperaments);
   const filter = useSelector((state) => state.filter);
   const dogsPerPage = 8;
@@ -33,7 +34,7 @@ const Home = () => {
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [form, setForm] = useState({ temperaments: [] });
-  const [formAPIDB, setformAPIDB] = useState({ filterApiDB: [] });
+  const [formAPIDB] = useState({ filterApiDB: [] });
 
   if (dogs.length > 0 && items.length === 0)
     setItems([...dogs].splice(0, dogsPerPage));
@@ -45,7 +46,7 @@ const Home = () => {
     dispatch(resetDog());
     dispatch(resetDogs());
     dispatch(resetFilter());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (filter === true) {
@@ -64,15 +65,6 @@ const Home = () => {
       temperaments: [...form.temperaments, value],
     });
     dispatch(temperamentFilter([...dogs], value));
-  };
-
-  const APIDBHandler = (event) => {
-    const value = event.target.value;
-    setformAPIDB({
-      ...formAPIDB,
-      filterApiDB: [...formAPIDB.filterApiDB, value],
-    });
-    dispatch(apiDbFilter(dogsFromBE, value));
   };
 
   const firstHandler = (firstPage) => {
@@ -142,7 +134,7 @@ const Home = () => {
             <SortWeight dogs={dogs} />
           </li>
           <li>
-            <APIDBFilter dogs={dogs} />
+            <APIDBFilter dogs={dogsFromBE} />
           </li>
           <li>
             <TemperamentsFilter

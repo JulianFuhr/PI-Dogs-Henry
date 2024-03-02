@@ -19,10 +19,8 @@ const TemperamentsFilter = ({ form, allTemperaments, temperamentsHandler }) => {
         })}
       </select>
       <div>
-        {form.temperaments.map((el) => (
-          <>
-            <span key={el}>{el} </span>
-          </>
+        {form.temperaments.map((el, index) => (
+          <span key={index}>{el} </span>
         ))}
       </div>
     </div>

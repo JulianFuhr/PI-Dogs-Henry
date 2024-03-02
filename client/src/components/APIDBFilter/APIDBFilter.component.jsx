@@ -12,12 +12,6 @@ const APIDBFilter = ({ dogs }) => {
     const selectedValue = event.target.value;
     setSortValue(selectedValue);
     dispatch(apiDbFilter(dogs, selectedValue));
-
-    // setformAPIDB({
-    //   ...formAPIDB,
-    //   filterApiDB: [...formAPIDB.filterApiDB, value],
-    // });
-    // dispatch(apiDbFilter(dogsFromBE, value));
   };
 
   return (
@@ -34,13 +28,6 @@ const APIDBFilter = ({ dogs }) => {
           DataBase
         </option>
       </select>
-      <div>
-        {/* {formAPIDB.filterApiDB.map((el) => (
-          <>
-            <span key={el}>{el} </span>
-          </>
-        ))} */}
-      </div>
     </div>
   );
 };

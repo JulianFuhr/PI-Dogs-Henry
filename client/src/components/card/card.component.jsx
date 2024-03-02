@@ -24,25 +24,3 @@ const Card = (props) => {
 };
 
 export default Card;
-// function Card({ dog }) {
-//   const { name, image, temperament, weight_min, weight_max } = dog;
-
-//   return (
-//     <div className="card-container">
-//       <h2>{name}</h2>
-//       <img src={image} alt="" />
-//       <h1>{temperament}</h1>
-//       <p>{weight_min} kg</p>
-//       <p>{weight_max} kg</p>
-//       {dog.id === "no info" ? (
-//         <>
-//           <p>No Details</p>
-//         </>
-//       ) : (
-//         <Link to={`/home/${dog.id}`}>
-//           <p>Details</p>
-//         </Link>
-//       )}
-//     </div>
-//   );
-// }

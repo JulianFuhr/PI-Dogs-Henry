@@ -178,179 +178,179 @@ const Create = () => {
 
   return (
     <div className="container-create-form">
-    <form onSubmit={submitHandler} className="form">
-      {modal && (
-        <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="modalContent">
-            {!loading ? (
-              <>
-                {isApiError ? (
-                  <>
-                    <img
-                      className="imgNotCreate"
-                      src="assets\cheque.png"
-                      alt="create img"
-                    ></img>
-                    <h2>There is an error with the information.</h2>
-                  </>
-                ) : (
-                  <>
-                    <img
-                      className="imgCreate"
-                      src="assets\cheque.png"
-                      alt="create img"
-                    ></img>
-                    <h2>You have created a breed of dog!</h2>
-                  </>
-                )}
-                <p>{apiResponse}</p>
-              </>
-            ) : (
-              <>
-                <img
-                  className="imgNotCreate"
-                  src="client\assets\cheque.png"
-                  alt="loading img"
-                ></img>
-              </>
-            )}
-            <button className="closeModal" onClick={toggleModal}>
-              X
-            </button>
+      <form onSubmit={submitHandler} className="form">
+        {modal && (
+          <div className="modal">
+            <div onClick={toggleModal} className="overlay"></div>
+            <div className="modalContent">
+              {!loading ? (
+                <>
+                  {isApiError ? (
+                    <>
+                      <img
+                        className="imgNotCreate"
+                        src="assets\cheque.png"
+                        alt="create img"
+                      ></img>
+                      <h2>There is an error with the information.</h2>
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        className="imgCreate"
+                        src="assets\cheque.png"
+                        alt="create img"
+                      ></img>
+                      <h2>You have created a breed of dog!</h2>
+                    </>
+                  )}
+                  <p>{apiResponse}</p>
+                </>
+              ) : (
+                <>
+                  <img
+                    className="imgNotCreate"
+                    src="assets\cheque.png"
+                    alt="loading img"
+                  ></img>
+                </>
+              )}
+              <button className="closeModal" onClick={toggleModal}>
+                X
+              </button>
+            </div>
           </div>
+        )}
+        <div className="titlecreate">
+          <h2> CREATE A DOG! </h2>
         </div>
-      )}
-      <div className="titlecreate">
-        <h2> CREATE A DOG! </h2>
-      </div>
-      <label>Name: </label>
-      <input
-        type="text"
-        value={form.name}
-        name="name"
-        onChange={changeHandler}
-      />
+        <label>Name: </label>
+        <input
+          type="text"
+          value={form.name}
+          name="name"
+          onChange={changeHandler}
+        />
         {errors.name && (
-          <>            
+          <>
             <span className="spanCreate">{errors.name}</span>
           </>
         )}
-      <br />
-      <label>Image URL: </label>
-      <input
-        type="url"
-        value={form.image}
-        name="image"
-        onChange={changeHandler}
-      />
+        <br />
+        <label>Image URL: </label>
+        <input
+          type="url"
+          value={form.image}
+          name="image"
+          onChange={changeHandler}
+        />
         {errors.image && (
           <>
             <span className="spanCreate">{errors.image}</span>
           </>
         )}
-      <br />
-      <label>Min. Height: </label>
-      <input
-        type="number"
-        value={form.height_min}
-        name="height_min"
-        onChange={changeHandler}
-      />
+        <br />
+        <label>Min. Height: </label>
+        <input
+          type="number"
+          value={form.height_min}
+          name="height_min"
+          onChange={changeHandler}
+        />
         {errors.height_min && (
           <>
             <span className="spanCreate">{errors.height_min}</span>
           </>
         )}
-      <br />
-      <label>Max. Height: </label>
-      <input
-        type="number"
-        value={form.height_max}
-        name="height_max"
-        onChange={changeHandler}
-      />
+        <br />
+        <label>Max. Height: </label>
+        <input
+          type="number"
+          value={form.height_max}
+          name="height_max"
+          onChange={changeHandler}
+        />
         {errors.height_max && (
           <>
             <span className="spanCreate">{errors.height_max}</span>
           </>
         )}
-      <br />
-      <label>Min Weight: </label>
-      <input
-        type="number"
-        value={form.weight_min}
-        name="weight_min"
-        onChange={changeHandler}
-      />
+        <br />
+        <label>Min Weight: </label>
+        <input
+          type="number"
+          value={form.weight_min}
+          name="weight_min"
+          onChange={changeHandler}
+        />
         {errors.weight_min && (
           <>
             <span className="spanCreate">{errors.weight_min}</span>
           </>
         )}
-      <br />
-      <label>Max Weight: </label>
-      <input
-        type="number"
-        value={form.weight_max}
-        name="weight_max"
-        onChange={changeHandler}
-      />
+        <br />
+        <label>Max Weight: </label>
+        <input
+          type="number"
+          value={form.weight_max}
+          name="weight_max"
+          onChange={changeHandler}
+        />
         {errors.weight_max && (
           <>
             <span className="spanCreate">{errors.weight_max}</span>
           </>
         )}
-      <br />
-      <label> Life Span: </label>
-      <input
-        type="number"
-        value={form.life_span}
-        name="life_span"
-        onChange={changeHandler}
-      />
+        <br />
+        <label> Life Span: </label>
+        <input
+          type="number"
+          value={form.life_span}
+          name="life_span"
+          onChange={changeHandler}
+        />
         {errors.life_span && (
-          <>         
+          <>
             <span className="spanCreate">{errors.life_span}</span>
           </>
         )}
-      <br />
-      <label>Temperaments: </label>
-      <select onChange={selectHandler}>
-        <option disabled value="">
-          {" "}
-          Select one or more temperaments
-        </option>
-        {allTemperaments.map((temp) => {
-          return (
-            <option value={JSON.stringify(temp)} key={temp.id} name={temp}>
-              {temp.name}
-            </option>
-          );
-        })}
-      </select>
+        <br />
+        <label>Temperaments: </label>
+        <select onChange={selectHandler}>
+          <option disabled value="">
+            {" "}
+            Select one or more temperaments
+          </option>
+          {allTemperaments.map((temp) => {
+            return (
+              <option value={JSON.stringify(temp)} key={temp.id} name={temp}>
+                {temp.name}
+              </option>
+            );
+          })}
+        </select>
         {errors.temperaments && (
-          <>     
+          <>
             <span className="spanCreate">{errors.temperaments}</span>
           </>
         )}
-      <br />
-      <h4>Selected temperaments: </h4>
-      <div>
-        {form.temperaments.map((el) => (
-          <>
-            <span key={el.id}>{el.name} </span>
-            <button onClick={() => deleteHandler(el)} className="xButton">
-              x
-            </button>
-          </>
-        ))}
-      </div>
-      <br />
-      <button type="submit" className="submitButton">
-        Create!
-      </button>
-    </form>
+        <br />
+        <h4>Selected temperaments: </h4>
+        <div>
+          {form.temperaments.map((el) => (
+            <>
+              <span key={el.id}>{el.name} </span>
+              <button onClick={() => deleteHandler(el)} className="xButton">
+                x
+              </button>
+            </>
+          ))}
+        </div>
+        <br />
+        <button type="submit" className="submitButton">
+          Create!
+        </button>
+      </form>
     </div>
   );
 };

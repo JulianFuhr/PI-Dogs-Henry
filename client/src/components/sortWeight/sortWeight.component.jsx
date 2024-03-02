@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import "./sortWeight.styles.css";
 
 const SortWeight = ({ dogs }) => {
+  //state local p almc el valor del peso.
   const [weightValue, setWeightValue] = useState("");
   const dispatch = useDispatch();
 

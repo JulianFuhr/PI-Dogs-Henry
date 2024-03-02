@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./cardID.styles.css";
 
 const CardID = ({ loading }) => {
+  // Obtiene información del estado global sobre el perro seleccionado.
   const dog = useSelector((state) => state.dog);
   const [modal, setModal] = useState(false);
   const [apiResponse, setApiResponse] = useState("");

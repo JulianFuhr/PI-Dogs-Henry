@@ -6,6 +6,7 @@ import "./searchBar.styles.css";
 const SearchBar = () => {
   const dispatch = useDispatch();
 
+  //state local para almac. el valor de la busqueda8
   const [search, setSearch] = useState({
     name: "",
   });
