@@ -13,6 +13,8 @@ dogRouter.get('/', async (req, res) => {
     }
 });
 
+
+
 dogRouter.get('/name', async (req, res) => {
     const { name } = req.query;
     try {
@@ -28,15 +30,14 @@ dogRouter.get('/name', async (req, res) => {
     };
 });
 
+
+
 dogRouter.get('/:idRaza', async (req, res) => {
     const idRaza = req.params.idRaza;
     const dog = await getDogsByID(idRaza);
     res.send(dog);
 });
 
-// dogRouter.get('/temperaments', async (req, res) => {
-//     const temperaments = await getTemperaments(temperaments)
-// })
 
 
 dogRouter.post('/', async (req, res) => {
@@ -62,6 +63,5 @@ dogRouter.post('/', async (req, res) => {
     }
 
 })
-// como depurar node.js
 
 module.exports = dogRouter;

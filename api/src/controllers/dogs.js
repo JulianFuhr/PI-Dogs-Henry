@@ -1,6 +1,7 @@
 const { Dog, Temperaments, DogsTemperaments } = require("../db");
 const { getDogsFromApi } = require("../services/dogs.service");
 
+//*mapa de los perros, le paso el from para indicar que vienen de la APi
 const mapDogs = (dogs) => {
     return dogs.map((dog) => ({
         id: dog.id,
@@ -16,8 +17,8 @@ const mapDogs = (dogs) => {
     }));
 };
 
+//* mapa de Perros desde la DB
 const mapDBDogs = (dogs) => {
-    console.log(dogs);
     return dogs.map((dog) => ({
         id: dog.id,
         name: dog.name,
@@ -27,6 +28,7 @@ const mapDBDogs = (dogs) => {
         weight_max: dog.weight_max,
         height_min: dog.height_min,
         height_max: dog.height_max,
+        //*mapeo los temps del perro y los uno en una cadena
         temperament: dog.Temperaments.map(temperament => temperament.name).join(),
         from: "DataBase",
     }));
@@ -34,6 +36,7 @@ const mapDBDogs = (dogs) => {
 
 const splitMed = (medida) => {
     if (medida.includes('-')) {
+        //*para dividir los valores que tengan un "-" de por medio
         const medidaSplited = medida.trim().split('-')
         const medidaMax = medidaSplited[1]
         const medidaMin = medidaSplited[0]
@@ -53,7 +56,7 @@ const splitMed = (medida) => {
 }
 
 
-
+//traer los perros de la API y mapeo la info de cada
 const getApiDogs = async () => {
     try {
         const dogsFromApi = await getDogsFromApi()
@@ -66,7 +69,7 @@ const getApiDogs = async () => {
     }
 }
 
-
+//consulta a la BD inc temp asociados
 const getDBDog = async () => {
     const dogsDB = await Dog.findAll({
         include: {
@@ -80,6 +83,7 @@ const getDBDog = async () => {
     return mapDBDogs(dogsDB);
 }
 
+//combino la info de ambos
 const getAllDogs = async () => {
     const apiDogs = await getApiDogs();
     const dbInfo = await getDBDog();
@@ -87,6 +91,7 @@ const getAllDogs = async () => {
     return infoTotal;
 }
 
+//obtengo la info completa de cada
 const getDogsByID = async (id) => {
     const dogs = await getAllDogs();
     const dogByID = dogs.find(dog => dog.id == id);
@@ -122,7 +127,7 @@ const createDog = async ({ name, image, weight_min, weight_max, height_max, heig
 
     });
 
-    //hago relacion cona temps para ver si existen
+    //hago relacion con temps para ver si existen
     if (temperaments && temperaments.length > 0) {
         for (const temperamentId of temperaments) {
             await DogsTemperaments.create({ DogId: dogNew.id, TemperamentId: temperamentId });
